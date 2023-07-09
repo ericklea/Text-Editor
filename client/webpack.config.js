@@ -24,7 +24,7 @@ module.exports = () => {
     plugins: [
       new HtmlWebpackPlugin({
         template: './src/index.html',
-        title: 'My App',
+        title: 'JATE',
       }),
       // injects my service worker into my html file
       new InjectManifest({

@@ -12,12 +12,28 @@ module.exports = () => {
     entry: {
       main: './src/js/index.js',
       install: './src/js/install.js'
+      database: './src/js/database.js'
+      editor: './src/js/editor.js'
+      header: './src/js/header.js'
     },
     output: {
       filename: '[name].bundle.js',
       path: path.resolve(__dirname, 'dist'),
     },
+    // webpack plugin that generates my html file and injects my bundles
     plugins: [
+      new HtmlWebpackPlugin({
+        template: './src/index.html',
+        title: 'My App',
+      }),
+      // injects my service worker into my html file
+      new InjectManifest({
+        swSrc: './src-sw.js',
+        swDest: 'sw.js',
+      }),
+      // created a manifest.json file
+      new WebpackPwaManifest({
+
       
     ],
 

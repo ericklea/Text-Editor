@@ -11,9 +11,9 @@ module.exports = () => {
     mode: 'development',
     entry: {
       main: './src/js/index.js',
-      install: './src/js/install.js'
-      database: './src/js/database.js'
-      editor: './src/js/editor.js'
+      install: './src/js/install.js',
+      database: './src/js/database.js',
+      editor: './src/js/editor.js',
       header: './src/js/header.js'
     },
     output: {
@@ -33,6 +33,47 @@ module.exports = () => {
       }),
       // created a manifest.json file
       new WebpackPwaManifest({
+        name: 'JATE',
+        short_name: 'JATE',
+        description: 'A simple text editor',
+        background_color: '#ffffff',
+        theme_color: '#ffffff',
+        start_url: './',
+        publicPath: './',
+        icons: [
+          {
+            src: path.resolve('src/images/logo.png'),
+            sizes: [96, 128, 192, 256, 384, 512],
+            destination: path.join('assets', 'icons'),
+          },
+        ],
+      }),
+
+    ],
+
+    // webpack loaders
+    module: {
+      rules: [
+        {
+          test: /\.css$/i,
+          use: ['style-loader', 'css-loader'],
+        },
+        {
+          test:/\.m?js$/,
+          exclude: /node_modules/,
+          use: {
+            loader: 'babel-loader',
+            options: {
+              presets: ['@babel/preset-env'],
+              plugins:['@babel/plugin-transform-runtime', '@babel/plugin-proposal-object-rest-spread'],
+            },
+          },
+        },
+      ],
+    },
+  };
+
+
 
       
     ],

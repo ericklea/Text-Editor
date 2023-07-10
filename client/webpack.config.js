@@ -14,7 +14,7 @@ module.exports = () => {
       install: './src/js/install.js',
       database: './src/js/database.js',
       editor: './src/js/editor.js',
-      header: './src/js/header.js'
+      header: './src/js/header.js',
     },
     output: {
       filename: '[name].bundle.js',
@@ -23,23 +23,23 @@ module.exports = () => {
     // webpack plugin that generates my html file and injects my bundles
     plugins: [
       new HtmlWebpackPlugin({
-        template: './src/index.html',
+        template: './index.html',
         title: 'JATE',
       }),
       // injects my service worker into my html file
       new InjectManifest({
         swSrc: './src-sw.js',
-        swDest: 'sw.js',
+        swDest: 'src-sw.js',
       }),
       // created a manifest.json file
       new WebpackPwaManifest({
         name: 'JATE',
         short_name: 'JATE',
-        description: 'A simple text editor',
+        description: 'Just Another Text Editor',
         background_color: '#ffffff',
         theme_color: '#ffffff',
-        start_url: './',
-        publicPath: './',
+        start_url: '/',
+        publicPath: '/',
         icons: [
           {
             src: path.resolve('src/images/logo.png'),
@@ -71,17 +71,5 @@ module.exports = () => {
         },
       ],
     },
-  };
-
-
-
-      
-    ],
-
-    module: {
-      rules: [
-        
-      ],
-    },
-  };
+  }
 };

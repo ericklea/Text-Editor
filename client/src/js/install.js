@@ -9,7 +9,7 @@ event.preventDefault();
 // store the event for later
 window.deferredPrompt = event;
 // remove the hidden attribute from the install button
-butInstall.removeAttribute('hidden');
+butInstall.removeAttribute('hidden', false);
 });
 // TODO: Implement a click event handler on the `butInstall` element
 butInstall.addEventListener('click', async () => {

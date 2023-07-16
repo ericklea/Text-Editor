@@ -52,7 +52,6 @@ const request = store.getAll();
 // confirmation that the content was added
 const result = await request;
 console.log('data retrieved from the database', result);
-return result?.value;
-};
+}
 
 initdb();

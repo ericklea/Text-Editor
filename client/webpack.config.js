@@ -19,17 +19,19 @@ module.exports = () => {
     output: {
       filename: '[name].bundle.js',
       path: path.resolve(__dirname, 'dist'),
+      publicPath: '',
     },
     // webpack plugin that generates my html file and injects my bundles
     plugins: [
       new HtmlWebpackPlugin({
         template: './index.html',
-        title: 'JATE',
+        title: 'Webpack Plugin',
+        publicPath: '',
       }),
       // injects my service worker into my html file
       new InjectManifest({
         swSrc: './src-sw.js',
-        swDest: 'src-sw.js',
+        swDest: './src-sw.js',
       }),
       // created a manifest.json file
       new WebpackPwaManifest({
@@ -39,7 +41,7 @@ module.exports = () => {
         background_color: '#ffffff',
         theme_color: '#ffffff',
         start_url: '/',
-        publicPath: '/',
+        publicPath: './',
         icons: [
           {
             src: path.resolve('src/images/logo.png'),

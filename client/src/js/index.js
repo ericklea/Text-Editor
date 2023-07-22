@@ -2,10 +2,6 @@ import { Workbox } from 'workbox-window';
 import Editor from './editor';
 import './database';
 import '../css/style.css';
-import logo from '../images/logo.png';
-document.getElementById('logo').src = logo;
-import favicon from '../../favicon.png'
-doucment.getElementById('favicon').href = favicon;
 
 const main = document.querySelector('#main');
 main.innerHTML = '';
